@@ -1,7 +1,5 @@
 *.bz2
-
 bootloaders/*/build/
-
 .DS_Store
 
-*.json
+package_electroniccats-samd-2.0.0_index.json

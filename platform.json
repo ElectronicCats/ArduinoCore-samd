@@ -1,0 +1,54 @@
+{
+    "name": "electronic-cats-samd",
+    "title": "Electronic Cats SAMD(L)(C) Core for Arduino",
+    "description": "Arduino support for SAM D|L|C (M0+ and M4F). Support for D51, SAMR34, L21, C21, and D11",
+    "homepage": "http://www.electroniccats.com",
+    "license": "LGPL 2.0",
+    "keywords": [
+        "dev-platform",
+        "ARM",
+        "Cortex-M",
+        "Atmel",
+        "Microchip",
+        "samr34",
+        "samd51",
+        "samd21",
+        "saml21",
+        "samc21",
+        "samd11"
+      ],
+    "engines": { "platformio": "^3.0.0" },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/ElectronicCats/ArduinoCore-samd"
+    },
+    "version": "2.0.4",
+    "packageRepositories": [
+      "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+      "http://dl.platformio.org/packages/manifest.json"   
+    ],
+    "frameworks": {
+      "arduino": {
+        "package": "framework-arduino-samd-electroniccats",
+        "script": "builder/frameworks/arduino.py"
+      },
+      "baremetal": {
+        "package": "framework-arduino-samd-electroniccats",
+        "script": "builder/frameworks/baremetal.py"
+      }                
+    },
+    "packages": {
+      "toolchain-gccarmnoneeabi": {
+        "type": "toolchain",
+        "version": "=1.70201.0"
+      }, 
+      "framework-arduino-samd-electroniccats": {
+        "type": "framework",
+        "version": "https://github.com/ElectronicCats/ArduinoCore-samd" 
+      },
+      "tool-arduino-samd-electroniccats": {
+        "type": "uploader",
+        "version": "https://github.com/ElectronicCats/Arduino_Boards_Index"
+      }      
+    }
+  }
