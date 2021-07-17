@@ -8,7 +8,8 @@ jobs:
       fail-fast: false
       matrix:
         arduino-platform: ['bast_pro_mini_m0', 'catwan_usb_stick', 'meow_meow', 'meow_meow2', catwan_relay_board, catwan_citizen,
-                           makech, catwan_tracker, nfc_copy_cat, magspoofv3, bastwan, meowmeow_mini]
+                           makech, catwan_tracker, nfc_copy_cat, magspoofv3, bastwan, meowmeow_mini, catsniffer]
+
 
     runs-on: ubuntu-latest
     
