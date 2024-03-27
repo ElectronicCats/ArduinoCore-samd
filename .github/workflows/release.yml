@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+env:
+    FILENAME: ""
+    PACKAGENAME: ""
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package
+        run: |
+            echo "Build done"
+            cd extras && ./pack.release_linux.bash
+            cd ..            
+      
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/*
+      
+      - name: Trigger Release
+        env:
+            SECRET: ${{ secrets.PAT }}
+        run: |
+            echo "Triggering Release"
+            FILENAME=$(basename  release/package_electroniccats-samd-*.json)
+            PACKAGENAME=$(basename  release/electroniccats-samd-*.tar.bz2)
+            echo "FILENAME: $FILENAME"
+            echo "PACKAGENAME: $PACKAGENAME"
+            curl -X POST https://api.github.com/repos/JahazielLem/Arduino_Boards_Index/dispatches \
+            -H 'Accept: application/vnd.github.everest-preview+json' \
+            -H "Authorization: Bearer $SECRET" \
+            --data '{"event_type": "'workflow_02'", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'", "tag": "'"$GITHUB_REF"'", "file": "'"$FILENAME"'", "package": "'"$PACKAGENAME"'"}}'
+      - uses: actions/checkout@v4
