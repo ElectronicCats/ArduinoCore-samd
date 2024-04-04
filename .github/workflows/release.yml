@@ -41,7 +41,7 @@ jobs:
             PACKAGENAME=$(basename  release/electroniccats-samd-*.tar.bz2)
             echo "FILENAME: $FILENAME"
             echo "PACKAGENAME: $PACKAGENAME"
-            curl -X POST https://api.github.com/repos/JahazielLem/Arduino_Boards_Index/dispatches \
+            curl -X POST https://api.github.com/repos/ElectronicCats/Arduino_Boards_Index/dispatches \
             -H 'Accept: application/vnd.github.everest-preview+json' \
             -H "Authorization: Bearer $SECRET" \
             --data '{"event_type": "'workflow_02'", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'", "tag": "'"$GITHUB_REF"'", "file": "'"$FILENAME"'", "package": "'"$PACKAGENAME"'"}}'
